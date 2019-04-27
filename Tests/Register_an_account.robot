@@ -1,6 +1,7 @@
 *** Settings ***
 Test Teardown     Close Browser
 Library           SeleniumLibrary
+Library           Dialogs
 
 *** Test Cases ***
 Register_an_account
@@ -14,6 +15,7 @@ Register_an_account
     Given Verify necessary fields which represent personal information
     Then Fill in personal information
     And Register username and password
+    And Verify that registation is successful
 
 *** Keywords ***
 Verify necessary fields which represent personal information
@@ -45,3 +47,7 @@ Register username and password
     Input Password    name=confirmPassword    123456
     Click Button    name=submit
     Wait Until Page Contains    Thank you for registering    10s
+
+Verify that registation is successful
+    Page Should Contain    Thank you for registering.
+    Page Should Contain    Note: Your user name is Truong.
