@@ -5,6 +5,7 @@ Library  SeleniumLibrary
 ${Browser}  Chrome
 ${MainPage}  https://google.com/
 ${StackOverFlow}  http://www.stackoverflow.com/
+${CFDOnline}  https://www.cfd-online.com/
 
 *** Keywords ***
 Start Browser and Maximize
@@ -17,3 +18,14 @@ Scroll Down Webpage
 
 Press Enter Key
     Press Key    name=q    \\13
+
+Verify Content of Combobox
+    [Arguments]    ${locator}    ${content}
+    @{items}=    Execute Javascript    var arr = new Array(); arr = '${content}'.split(","); return arr;
+    ${xpath}=    Set Variable    ${locator}
+    ${count}=    Get Matching Xpath Count    ${xpath}
+    :FOR    ${i}    IN RANGE    1    ${count} + 1
+    \    ${name}=    Get Text    xpath=(${xpath})[${i}]
+    \   ${j}    Evaluate    ${i} - 1
+    \   Should Be Equal As Strings    @{items}[${j}]    ${name}
+
