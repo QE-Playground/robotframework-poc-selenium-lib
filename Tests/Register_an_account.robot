@@ -35,9 +35,9 @@ Fill in personal information
     Input Text    name=lastName    Dang
     Input Text    name=phone    012345678
     Input Text    id=userName    dangtruong080593@gmail.com
-    Input Text    name=address1    111 Nguyen Dinh Chinh, P15
-    Input Text    name=city    PN
-    Input Text    name=state    HCM
+    Input Text    name=address1    39B Truong Son
+    Input Text    name=city    Tan Binh Dist.
+    Input Text    name=state    HCM City
     Input Text    name=postalCode    9999
     Select From List By Value    name=country    VIETNAM
 
