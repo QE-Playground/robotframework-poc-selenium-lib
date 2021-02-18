@@ -1,7 +1,6 @@
 *** Settings ***
 Test Teardown     Close Browser
 Library           SeleniumLibrary
-Library           Dialogs
 
 *** Test Cases ***
 Register_an_account
