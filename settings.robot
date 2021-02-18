@@ -23,9 +23,10 @@ Verify Content of Combobox
     [Arguments]    ${locator}    ${content}
     @{items}=    Execute Javascript    var arr = new Array(); arr = '${content}'.split(","); return arr;
     ${xpath}=    Set Variable    ${locator}
-    ${count}=    Get Matching Xpath Count    ${xpath}
-    :FOR    ${i}    IN RANGE    1    ${count} + 1
-    \    ${name}=    Get Text    xpath=(${xpath})[${i}]
-    \   ${j}    Evaluate    ${i} - 1
-    \   Should Be Equal As Strings    @{items}[${j}]    ${name}
+    ${count}=    Get Element Count    ${xpath}
+    FOR    ${i}    IN RANGE    1    ${count} + 1
+        ${name}=    Get Text    xpath=(${xpath})[${i}]
+        ${j}    Evaluate    ${i} - 1
+        Should Be Equal As Strings    @{items}[${j}]    ${name}
+    END
 
